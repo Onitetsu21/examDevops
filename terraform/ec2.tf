@@ -1,12 +1,17 @@
-resource "aws_key_pair" "my_key_pair" {
-  key_name   = "gaelAlixKey"
+resource "aws_key_pair" "my_key_pair_1" {
+  key_name   = "gaelAlixKey_server1"
+  public_key = tls_private_key.my_ssh_key.public_key_openssh
+}
+
+resource "aws_key_pair" "my_key_pair_2" {
+  key_name   = "gaelAlixKey_server2"
   public_key = tls_private_key.my_ssh_key.public_key_openssh
 }
 
 resource "aws_instance" "server_1" {
   ami           = data.aws_ami.ubuntu_bionic.id
   instance_type = data.aws_ec2_instance_type_offering.t2_nano.id
-  key_name      = aws_key_pair.my_key_pair.key_name
+  key_name      = aws_key_pair.my_key_pair_1.key_name
 
   tags = {
     Name  = "Server-1 Gael & Alix"
@@ -16,7 +21,7 @@ resource "aws_instance" "server_1" {
 resource "aws_instance" "server_2" {
   ami           = data.aws_ami.ubuntu_bionic.id
   instance_type = data.aws_ec2_instance_type_offering.t2_nano.id
-  key_name      = aws_key_pair.my_key_pair.key_name
+  key_name      = aws_key_pair.my_key_pair_2.key_name
 
   tags = {
     Name  = "Server-2 Gael & Alix"

@@ -12,6 +12,6 @@
 
 - name: Ansible copy file to remote server
   ansible.builtin.copy:
-    src: cvalix/
+    src: /
     dest: /var/www/html
     #mode: '0644'
