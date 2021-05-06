@@ -1,0 +1,17 @@
+---
+# tasks file for addFiles
+
+- name: Recursively change ownership of a directory
+  ansible.builtin.file:
+    path: /var/www/html
+    state: directory
+    recurse: yes
+    owner: ubuntu
+    group: ubuntu
+
+
+- name: Ansible copy file to remote server
+  ansible.builtin.copy:
+    src: cvalix/
+    dest: /var/www/html
+    #mode: '0644'

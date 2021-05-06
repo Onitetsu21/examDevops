@@ -1,0 +1,14 @@
+---
+# tasks file for ubuntu/18.04/apache2
+
+- name: install apache2
+  apt:
+    pkg:
+      - apache2
+
+- name: ensure apache2 is started and enabled
+  systemd:
+    name: apache2
+    enabled: yes
+    state: started
+

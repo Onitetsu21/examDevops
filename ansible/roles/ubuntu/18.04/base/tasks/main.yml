@@ -1,0 +1,21 @@
+---
+# tasks file for ubuntu/18.04/base
+
+- name: update packet manager cache and pkg
+  apt:
+    update_cache: yes
+    upgrade: full
+    cache_valid_time: 86400
+
+- name: install common packages
+  apt:
+    pkg:
+      - aptitude
+      - zsh
+      - git
+      - dnsutils
+      - htop
+      - net-tools
+      - software-properties-common
+
+

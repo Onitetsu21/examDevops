@@ -1,0 +1,9 @@
+- name: common
+  hosts:
+    - all
+  roles:
+    - ubuntu/18.04/base
+    - ubuntu/18.04/apache2
+    - ubuntu/18.04/addFiles
+
+  #répertorie tous les rôles/services
